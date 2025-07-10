@@ -38,5 +38,5 @@
   Target group health checks (e.g., /health endpoint)
   
   Routes traffic to healthy instances in the ASG.
-  6. Bastion Host @ public subnet 
-  EC2 in public subnet to allow to access the worker EC2 
+  
+ 
