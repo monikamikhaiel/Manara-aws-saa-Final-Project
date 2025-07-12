@@ -49,12 +49,20 @@ The following steps detail the deployment process for the scalable web applicati
   - Create Application Load Balancer (ALB)
   - Create WAF and bound the ALB to it 
   - Create ACM certififcat to be added to the Listener to secure traffic 
-  - Create 2 Security Groups one for ALB access and the other one for EC2 
+  - Create 3 Security Groups one for ALB access , one for RDS and the third one for EC2 
       * ALB Security Group:
       
       Inbound: Allow HTTPS (Port 443) traffic from 0.0.0.0/0 (internet).
       
       Outbound: Allow traffic to the EC2 instances (Web Server Security Group).
+      
+      
+       * RDS Security Group:
+      
+      Inbound: Allow traffic  (Postgres / Mysql Port 5432/3306) traffic from the EC2 instances Web Server Security Group .
+      
+      Outbound: Allow traffic to the EC2 instances (Web Server Security Group).
+      
       
       * Web Server Security Group:
       
