@@ -46,7 +46,7 @@ The following steps detail the deployment process for the scalable web applicati
   - Create a VPC at least two public and two private subnets across two distinct Availability Zones.
   - Create 2 route tables one for public and one for private route.
   - Create an Internet Gateway (IGW) along with  NAT Gateway (located in a public subnet) for outbound internet access.
-  - Create Application Load Balancer (ALB)
+  - Create Application Load Balancer (ALB) across subnets in `multi-AZ` 
   - Create WAF and bound the ALB to it 
   - Create ACM certififcat to be added to the Listener to secure traffic 
   - Create 3 Security Groups one for ALB access , one for RDS and the third one for EC2 
@@ -76,7 +76,7 @@ The following steps detail the deployment process for the scalable web applicati
  - Create a Secret in AWS secret Manager to store RDS credentials 
 
 #### 3.3. Compute and Load Balancing Configuration
-  - Create The Launch Template that defines the specifications for instances managed by the ASG along with User Data including a script [UserData] to automate application installation and configuration .
+  - Create The Launch Template that defines the specifications for instances managed by the ASG along with User Data including a script [UserData] to automate application installation and configuration across `multi-AZ` .
   - Create ASG (Desired: 2 ; Minimum: 1 ; Maximum: 4 ) with Target Tracking Scaling Policy use as metric CPUUtilization (for compute-bound apps) or RequestCountPerTarget (from ALB, for load-bound apps).
       The ASG ensures that a minimum number of instances are always running and scales out (adds instances) or scales in (removes instances) based on `load`.
   - Create target group pointing to ASG
